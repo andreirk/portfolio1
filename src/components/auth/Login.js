@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Container, Row, Col, CardGroup, Card, CardBody, Button, Input, InputGroup, InputGroupAddon} from 'reactstrap';
 import {reduxForm, Field} from 'redux-form'
 import ErrorField from '../common/ErrorField'
-import {Route, NavLink} from 'react-router-dom'
+import {Route, NavLink, withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {signUp, signIn} from '../../ducks/auth'
 import SignIn from './SignIn'
@@ -10,9 +10,7 @@ import SignUp from './SignUp'
 
 const EmailField = (props) => {
   return (
-    
       <Input type="email" {...props} placeholder="Email"/>
-    
   )
 }
 
@@ -61,4 +59,4 @@ class Login extends Component {
 }
 
 
-export default connect(null, { signUp, signIn })(Login)
+export default withRouter( connect(null, { signUp, signIn })(Login) )

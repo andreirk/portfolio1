@@ -39,7 +39,7 @@ class Full extends Component {
             <Breadcrumb />
             <Container fluid>
               <Switch>
-                <Route path="/dashboard" name="Dashboard" component={Dashboard}/>
+                <Route exact path="/dashboard" name="Dashboard" component={Dashboard}/>
                 <Route path="/components/buttons" name="Buttons" component={Buttons}/>
                 <Route path = '/admin' name="Admin Page" component = {AdminPage}/>
                 <Route path = '/people' name="People Page" component = {PersonPage}/>
@@ -56,7 +56,7 @@ class Full extends Component {
                 <Route path="/widgets" name="Widgets" component={Widgets}/>
                 <Route path="/charts" name="Charts" component={Charts}/> */}
                 
-                {<Route path="/" name="Home" render={() => (<Redirect to="/login" />)}/>       }
+                {<Route exact path="/" name="Home" render={() => (<Redirect to="/auth" />)}/>       }
               </Switch>
 
             </Container>

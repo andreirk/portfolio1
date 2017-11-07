@@ -23,25 +23,26 @@ class App extends Component {
             <div>
                 <Switch>
   
-                {/* <ul>
-                    <li><NavLink to='/admin' activeStyle = {{color: 'red'}}>admin</NavLink></li>
-                    <li><NavLink to='/auth' activeStyle = {{color: 'red'}}>auth</NavLink></li>
-                    <li><NavLink to='/people' activeStyle = {{color: 'red'}}>people</NavLink></li>
-                    <li><NavLink to='/events' activeStyle = {{color: 'red'}}>events</NavLink></li>
-                </ul> */}
+                    {/* <ul>
+                        <li><NavLink to='/admin' activeStyle = {{color: 'red'}}>admin</NavLink></li>
+                        <li><NavLink to='/auth' activeStyle = {{color: 'red'}}>auth</NavLink></li>
+                        <li><NavLink to='/people' activeStyle = {{color: 'red'}}>people</NavLink></li>
+                        <li><NavLink to='/events' activeStyle = {{color: 'red'}}>events</NavLink></li>
+                    </ul> */}
+                    
+                    {/* <ProtectedRoute path = '/admin' component = {AdminPage}/>
+                    <ProtectedRoute path = '/people' component={PersonPage}/>
+                    <ProtectedRoute path = '/events' component={EventsPage}/> */}
+                    
+                    <Route exact path="/" component={Full}/> 
+
+                    <Route  path = '/auth' name="Auth Page" component = {AuthPage}/>
+                    <Route exact path="/404" name="Page 404" component={Page404}/>
+                    <Route exact path="/500" name="Page 500" component={Page500}/>
+                        
+                    {/* <Redirect from="/" to="/dashboard" />            */}
                 
-                {/* <ProtectedRoute path = '/admin' component = {AdminPage}/>
-                <ProtectedRoute path = '/people' component={PersonPage}/>
-                <ProtectedRoute path = '/events' component={EventsPage}/> */}
-                <Route path = '/auth' name="Auth Page" component = {AuthPage}/>
-                <Route exact path="/login" name="Login Page" component={Login}/>
-                <Route exact path="/register" name="Register Page" component={Register}/>
-                <Route exact path="/404" name="Page 404" component={Page404}/>
-                <Route exact path="/500" name="Page 500" component={Page500}/>
-                <Route path="/" name="Home" component={Full}/>     
-                {/* <Redirect from="/" to="/dashboard" />            */}
-              
-                <Route component={ Page404 } />
+                    <Route component={ Page404 } />
                 </Switch>
             </div>
         )
