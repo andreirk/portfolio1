@@ -63,15 +63,15 @@ class Header extends Component {
             <NavLink href="#"><i className="icon-bell"></i><Badge pill color="danger">5</Badge></NavLink>
           </NavItem>
           <NavItem className="d-md-down-none">
-            <NavLink href="#"><i className="icon-list"></i></NavLink>
+            <NavLink href="#"><i className="icon-list"></i>111</NavLink>
           </NavItem>
           <NavItem className="d-md-down-none">
-            <NavLink href="#"><i className="icon-location-pin"></i></NavLink>
+            <NavLink href="#"><i className="icon-location-pin"></i>222</NavLink>
           </NavItem>
           <HeaderDropdown/>
         </Nav>
         <NavbarToggler className="d-md-down-none" onClick={this.asideToggle}>
-          <span className="navbar-toggler-icon"></span>
+          <span className="navbar-toggler-icon">333</span>
         </NavbarToggler>
       </header>
     );

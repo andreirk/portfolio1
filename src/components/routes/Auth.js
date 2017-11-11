@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 import {Route, NavLink as Link, withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {signUp, signIn} from '../../ducks/auth'
-import SignIn from '../../components/auth/SignIn'
-import SignUp from '../../components/auth/SignUp'
-import Register from '../../components/auth/Register'
-import AuthHeader from '../../components/auth/AuthHeader'
+import SignIn from '../auth/SignIn'
+import SignUp from '../auth/SignUp'
+import Register from '../auth/Register'
+import AuthHeader from '../auth/AuthHeader'
 
 class AuthPage extends Component {
 

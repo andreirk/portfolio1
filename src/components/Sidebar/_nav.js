@@ -23,11 +23,11 @@ export default {
       url: '/components',
       icon: 'icon-puzzle',
       children: [
-        {
-          name: 'Buttons',
-          url: '/components/buttons',
-          icon: 'icon-puzzle'
-        },
+        // {
+        //   name: 'Buttons',
+        //   url: '/components/buttons',
+        //   icon: 'icon-puzzle'
+        // },
         {
           name: 'Admin',
           url: '/admin',
@@ -39,18 +39,13 @@ export default {
           icon: 'icon-puzzle'
         },
         {
+          name: 'Events',
+          url: '/admin/events',
+          icon: 'icon-puzzle'
+        },
+        {
           name: 'People',
-          url: '/people',
-          icon: 'icon-puzzle'
-        },
-        {
-          name: 'Events',
-          url: '/events',
-          icon: 'icon-puzzle'
-        },
-        {
-          name: 'Events',
-          url: '/sadfevents',
+          url: '/admin/people',
           icon: 'icon-puzzle'
         },
         // {
@@ -132,33 +127,33 @@ export default {
     //   title: true,
     //   name: 'Extras'
     // },
-    {
-      name: 'Pages',
-      url: '/pages',
-      icon: 'icon-star',
-      children: [
-        {
-          name: 'Login',
-          url: '/login',
-          icon: 'icon-star'
-        },
-        {
-          name: 'Register',
-          url: '/register',
-          icon: 'icon-star'
-        },
-        {
-          name: 'Error 404',
-          url: '/404',
-          icon: 'icon-star'
-        },
-        {
-          name: 'Error 500',
-          url: '/500',
-          icon: 'icon-star'
-        }
-      ]
-    },
+    // {
+    //   name: 'Pages',
+    //   url: '/pages',
+    //   icon: 'icon-star',
+    //   children: [
+    //     {
+    //       name: 'Login',
+    //       url: '/login',
+    //       icon: 'icon-star'
+    //     },
+    //     {
+    //       name: 'Register',
+    //       url: '/register',
+    //       icon: 'icon-star'
+    //     },
+    //     {
+    //       name: 'Error 404',
+    //       url: '/404',
+    //       icon: 'icon-star'
+    //     },
+    //     {
+    //       name: 'Error 500',
+    //       url: '/500',
+    //       icon: 'icon-star'
+    //     }
+    //   ]
+    // },
     {
       name: 'Download Android Apps',
       url: 'http://coreui.io/react/',

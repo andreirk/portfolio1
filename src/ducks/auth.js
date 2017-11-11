@@ -19,6 +19,9 @@ export const SIGN_IN_SUCCESS = `${prefix}/SIGN_IN_SUCCESS`
 export const SIGN_IN_REQUEST = `${prefix}/SIGN_IN_REQUEST`
 export const SIGN_IN_ERROR = `${prefix}/SIGN_IN_ERROR`
 
+export const SIGN_OUT_SUCCESS = `${prefix}/SIGN_OUT_SUCCESS`
+export const SIGN_OUT_REQUEST = `${prefix}/SIGN_OUT_REQUEST`
+export const SIGN_OUT_ERROR = `${prefix}/SIGN_OUT_ERROR`
 /**
  * Reducer
  * */
@@ -129,8 +132,8 @@ export const signInSaga = function * () {
 export function * watchStatusChangeSaga() {
     while (true) {
         yield take(SIGN_IN_SUCCESS)
-
-        yield (put(replace('/dashboard')))
+        // redirect if sign in succcess
+        // yield (put(replace('/dashboard')))
     }
 }
 
