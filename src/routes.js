@@ -4,6 +4,8 @@ const routes = {
   '/components': 'Components',
   '/charts': 'Charts',
   '/components/buttons': 'Buttons',
+  '/admin/people': 'People',
+  '/admin/events': 'Events',
   '/components/social-buttons': 'Social Buttons',
   '/components/cards': 'Cards',
   '/components/forms': 'Forms',

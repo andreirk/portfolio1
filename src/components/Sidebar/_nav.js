@@ -29,23 +29,13 @@ export default {
         //   icon: 'icon-puzzle'
         // },
         {
-          name: 'Admin',
+          name: 'AdminPage',
           url: '/admin',
           icon: 'icon-puzzle'
         },
         {
           name: 'Auth',
           url: '/auth',
-          icon: 'icon-puzzle'
-        },
-        {
-          name: 'Events',
-          url: '/admin/events',
-          icon: 'icon-puzzle'
-        },
-        {
-          name: 'People',
-          url: '/admin/people',
           icon: 'icon-puzzle'
         },
         // {
@@ -106,6 +96,49 @@ export default {
     //     }
     //   ]
     // },
+    {
+      name: 'Apps',
+      // url: '/icons',
+      icon: 'icon-star',
+      children: [
+        {
+          name: 'Events and People',
+          // url: '/admin/font-awesome',
+          icon: 'icon-star',
+          badge: {
+            variant: 'secondary',
+            text: '4.7'
+          },
+          children: [
+            {
+              name: 'Events',
+              url: '/admin/events',
+              icon: 'icon-star',
+            },
+            {
+              name: 'People',
+              url: '/admin/people',
+              icon: 'icon-star',
+            }
+          ]
+        },
+        {
+          name: 'Indecision',
+          url: '/admin/indecision',
+          icon: 'icon-star'
+        },
+        {
+          name: 'Clonestagram',
+          url: '/admin/reduxstagram',
+          icon: 'icon-star'
+        },
+        // {
+        //   name: 'Simple Line Icons',
+        //   url: '/icons/simple-line-icons',
+        //   icon: 'icon-star'
+        // }
+      ]
+    },
     // {
     //   name: 'Widgets',
     //   url: '/widgets',
@@ -138,7 +171,7 @@ export default {
     //       icon: 'icon-star'
     //     },
     //     {
-    //       name: 'Register',
+    //       name: 'SignUp',
     //       url: '/register',
     //       icon: 'icon-star'
     //     },

@@ -12,17 +12,19 @@ import Widgets from '../../views/Widgets/Widgets';
 
 // Components
 import Buttons from '../../views/Components/Buttons/Buttons';
-import AdminPage from '../routes/Admin'
-import PersonPage from '../routes/PersonPage'
-import EventsPage from '../routes/EventsPage'
+import PersonPage from '../apps/EventsForPeople/routes/PersonPage'
+import EventsPage from '../apps/EventsForPeople/routes/EventsPage'
 
 // Icons
 import FontAwesome from '../../views/Icons/FontAwesome/FontAwesome';
 import SimpleLineIcons from '../../views/Icons/SimpleLineIcons/SimpleLineIcons';
 import Page404 from "../common/Page404/Page404";
+import IndecisionApp from "../apps/Indecision/components/IndecisionApp";
+import Reduxstagram from "../apps/ClonStagram/reduxstagram";
+import App from "../apps/Clonstagram2/routes/App";
 
 
-class Full extends Component {
+class AdminPage extends Component {
   constructor(props){
     super(props)
     this.match = props.match
@@ -41,9 +43,11 @@ class Full extends Component {
               <Switch>
                 {/*<Route exact path="/charts" name="Dashboard" component={Dashboard}/>*/}
                 <Route path="/admin/buttons" name="Buttons" component={Buttons}/>
+                <Route path="/admin/indecision" name="Indecision" component={IndecisionApp}/>
                 {/*<Route path = '/admin' name="Admin Page" component = {AdminPage}/>*/}
                 <Route path = '/admin/people' name="People Page" component = {PersonPage}/>
                 <Route path = '/admin/events' name="Events Page" component = {EventsPage}/>
+                <Route path = '/admin/reduxstagram' name="Events Page" component = {App}/>
                 {/*<Route exact path="/" name="Home" render={() => (<Redirect to="/auth" />)}/>*/}
                 {/*<Route component={ Page404 } />*/}
               </Switch>
@@ -58,4 +62,4 @@ class Full extends Component {
   }
 }
 
-export default Full;
+export default AdminPage;

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-// import EventsTable from '../events/VirtualizedLazyTable'
+import EventsTable from '../events/VirtualizedLazyTable'
 
 class EventsPage extends Component {
 
@@ -7,7 +7,7 @@ class EventsPage extends Component {
         return (
             <div>
                 EventsPage
-                {/* <EventsTable /> */}
+                 <EventsTable />
             </div>
         )
     }

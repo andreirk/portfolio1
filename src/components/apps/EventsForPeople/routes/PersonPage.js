@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
-import {addPerson} from '../../ducks/people'
-// import NewPersonForm from '../people/NewPersonForm'
-// import PeopleList from '../people/PeopleList'
+import {addPerson} from '../../../../ducks/people'
+import NewPersonForm from '../people/NewPersonForm'
+import PeopleList from '../people/PeopleList'
 
 class PersonPage extends Component {
 
@@ -10,8 +10,8 @@ class PersonPage extends Component {
         return (
             <div>
                 <h2>Add new person</h2>
-                 {/* <NewPersonForm onSubmit={this.props.addPerson}/>  */}
-                {/* <PeopleList /> */}
+                  <NewPersonForm onSubmit={this.props.addPerson}/>
+                 <PeopleList />
             </div>
         )
     }

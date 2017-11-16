@@ -13,6 +13,10 @@ import '../scss/style.scss'
 // Temp fix for reactstrap
 import '../scss/core/_dropdown-menu-right.scss'
 
+
+// import {saveEventsToFB} from './mocks'
+// saveEventsToFB()
+
 ReactDOM.render(
     <Root />
     , document.getElementById('root'));

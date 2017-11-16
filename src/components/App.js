@@ -4,11 +4,11 @@ import AuthPage from './routes/Auth'
 import ProtectedRoute from "./common/ProtectedRoute";
 
 // Containers
-import Full from './Full/Full'
+import Full from './Admin/AdminPage'
 
 // Views
 import Page404 from './common/Page404/Page404'
-import EventsPage from "./routes/EventsPage";
+import EventsPage from "./apps/EventsForPeople/routes/EventsPage";
 
 
 
@@ -28,7 +28,7 @@ class App extends Component {
                     <ProtectedRoute path = '/people' component={PersonPage}/>*/}
             {/*<ProtectedRoute path='/events' component={EventsPage}/>*/}
             {/*<Route exact path="/" name="Home" render={() => (<Redirect to="/admin" />)}/>*/}
-            <Route path="/admin" component={Full}/>
+            <ProtectedRoute path="/admin" component={Full}/>
             <Route path='/auth' name="Auth Page" component={AuthPage}/>
             {/*<Route exact path="/404" name="Page 404" component={Page404}/>*/}
 

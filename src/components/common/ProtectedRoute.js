@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Link, Route} from 'react-router-dom'
+import {Link, Redirect, Route} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {userSelector} from '../../ducks/auth'
 
@@ -14,9 +14,10 @@ class ProtectedRoute extends Component {
     }
 
     renderRoute = (...args) => {
-        const {authorized} = this.props
-        const AuthorizedComponent = this.props.component
-        return authorized ? <AuthorizedComponent {...args} /> : <div><h2>UnAuthorized </h2> please <Link to="/auth/signin">log in</Link> </div>
+        const {authorized, component: AuthorizedComponent, ...rest} = this.props
+        // const AuthorizedComponent = this.props.component
+        return authorized ? <AuthorizedComponent {...rest} />
+           : <Redirect to="/auth"/> //  <div><h2>UnAuthorized </h2> please <Link to="/auth/signin">log in</Link> </div>
     }
 }
 

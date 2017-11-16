@@ -6,6 +6,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const extractCSS = new ExtractTextPlugin('[name].fonts.css');
 const extractSCSS = new ExtractTextPlugin('[name].styles.css');
+const extractSTYL = new ExtractTextPlugin('[name].css');
 
 const BUILD_DIR = path.resolve(__dirname, 'build');
 const SRC_DIR = path.resolve(__dirname, 'src');
@@ -70,6 +71,21 @@ module.exports = (env = {}) => {
           }))
         },
         {
+          test: /\.styl$/,
+          use: ['css-hot-loader'].concat(extractSTYL.extract({
+            fallback: 'style-loader',
+            use: [
+              {
+                loader: 'css-loader',
+                options: {alias: {'../img': '../public/img'}}
+              },
+              {
+                loader: 'stylus-loader'
+              }
+            ]
+          }))
+        },
+        {
           test: /\.css$/,
           use: extractCSS.extract({
             fallback: 'style-loader',
@@ -80,8 +96,8 @@ module.exports = (env = {}) => {
           test: /\.(png|jpg|jpeg|gif|ico)$/,
           use: [
             {
-              // loader: 'url-loader'
-              loader: 'file-loader',
+              loader: 'url-loader',
+              // loader: 'file-loader',
               options: {
                 name: './img/[name].[hash].[ext]'
               }
@@ -96,12 +112,16 @@ module.exports = (env = {}) => {
           }
         }]
     },
+    resolve: {
+      extensions: ['.js', '.jsx', '.styl', '.json' ],
+    },
     plugins: [
       new webpack.HotModuleReplacementPlugin(),
       new webpack.optimize.UglifyJsPlugin({sourceMap: true}),
       new webpack.NamedModulesPlugin(),
       extractCSS,
       extractSCSS,
+      extractSTYL,
       new HtmlWebpackPlugin(
         {
           inject: true,

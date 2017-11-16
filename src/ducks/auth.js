@@ -72,6 +72,13 @@ export function signIn(email, password) {
     }
 }
 
+export function signOut() {
+    return {
+        type: SIGN_OUT_REQUEST,
+        // payload: {email, password}
+    }
+}
+
 firebase.auth().onAuthStateChanged(user => {
     if (!user) return
 
@@ -108,6 +115,29 @@ export function * signUpSaga() {
     }
 }
 
+export function * signOutSaga() {
+    const auth = firebase.auth()
+
+    while (true) {
+        const {payload} = yield take(SIGN_OUT_REQUEST)
+
+        try {
+          yield call([auth, auth.signOut ])
+            //const user = apply(auth, createUserWithEmailAndPassword, [email, password])
+
+            yield put({
+                type: SIGN_OUT_SUCCESS,
+                // payload: {user}
+            })
+        } catch (error) {
+            yield put({
+                type: SIGN_OUT_ERROR,
+                payload: {error}
+            })
+        }
+    }
+}
+
 export const signInSaga = function * () {
     const auth = firebase.auth()
 
@@ -133,7 +163,9 @@ export function * watchStatusChangeSaga() {
     while (true) {
         yield take(SIGN_IN_SUCCESS)
         // redirect if sign in succcess
-        // yield (put(replace('/dashboard')))
+        yield (put(replace('/admin')))
+        yield  take(SIGN_OUT_SUCCESS)
+            yield (put(replace('/auth')))
     }
 }
 
@@ -141,6 +173,7 @@ export function * saga() {
     yield all([
         signUpSaga(),
         signInSaga(),
+        signOutSaga(),
         watchStatusChangeSaga()
     ])
 }

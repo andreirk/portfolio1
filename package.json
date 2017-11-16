@@ -46,8 +46,10 @@
     "history": "4.7.2",
     "immutable": "^3.8.2",
     "react": "^16.0.0",
+    "react-addons-css-transition-group": "^15.6.2",
     "react-chartjs-2": "2.6.4",
     "react-dom": "^16.0.0",
+    "react-modal": "2.2.2",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
     "react-router-redux": "5.0.0-alpha.8",
@@ -60,7 +62,9 @@
     "redux-saga": "^0.16.0",
     "redux-thunk": "^2.2.0",
     "reselect": "^3.0.1",
-    "simple-line-icons": "^2.4.1"
+    "simple-line-icons": "^2.4.1",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.1"
   },
   "scripts": {
     "dev": "webpack -d --progress --watch --profile --json > compilation-stats.json --env.dev",

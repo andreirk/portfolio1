@@ -5,12 +5,25 @@ import createSagaMiddleware from 'redux-saga'
 import reducer from './reducer'
 import saga from './saga'
 import history from '../history'
+import posts from "../components/apps/Clonstagram2/data/posts";
+import comments from "../components/apps/Clonstagram2/data/comments";
 
 const sagaMiddleware = createSagaMiddleware()
 
 const enhancer = applyMiddleware(routerMiddleware(history), sagaMiddleware, logger)
 
-const store = createStore(reducer, enhancer)
+
+// create an object for the default data
+const defaultState = {
+  posts,
+  comments
+};
+
+const initState = {
+  clonstagram: defaultState
+}
+
+const store = createStore(reducer, initState, enhancer)
 
 sagaMiddleware.run(saga)
 

@@ -6,6 +6,8 @@ import {
   DropdownToggle,
   NavDropdown
 } from 'reactstrap';
+import {connect} from "react-redux";
+import {signOut} from "../../ducks/auth";
 
 class HeaderDropdown extends Component {
 
@@ -43,11 +45,13 @@ class HeaderDropdown extends Component {
           {/*<DropdownItem><i className="fa fa-file"></i> Projects<Badge color="primary">42</Badge></DropdownItem>*/}
           {/*<DropdownItem divider/>*/}
           {/*<DropdownItem><i className="fa fa-shield"></i> Lock Account</DropdownItem>*/}
-          <DropdownItem><i className="fa fa-lock"></i> Logout</DropdownItem>
+          <DropdownItem onClick={this.handleSignOut}><i className="fa fa-lock"></i> Logout</DropdownItem>
         </DropdownMenu>
       </NavDropdown>
     );
   }
+
+  handleSignOut = () =>  this.props.signOut()
 
   render() {
     const {...attributes} = this.props;
@@ -57,4 +61,4 @@ class HeaderDropdown extends Component {
   }
 }
 
-export default HeaderDropdown;
+export default  connect(null, {signOut}) (HeaderDropdown);
