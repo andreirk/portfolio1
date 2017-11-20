@@ -1,0 +1,14 @@
+.page-header {
+  background: $off-white;
+  margin-bottom: $s-size;
+  padding: $s-size;
+}
+
+.page-header__title {
+  font-weight: 300;
+  font-size: 25px;
+  margin: 0;
+  span {
+    font-weight: bold;
+  }
+}

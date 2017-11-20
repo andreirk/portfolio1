@@ -132,6 +132,16 @@ export default {
           url: '/admin/reduxstagram',
           icon: 'icon-star'
         },
+        {
+          name: 'Expensify',
+          url: '/admin/expensify',
+          icon: 'icon-star'
+        },
+        {
+          name: 'PhoneShop',
+          url: '/admin/phoneshop',
+          icon: 'icon-star'
+        },
         // {
         //   name: 'Simple Line Icons',
         //   url: '/icons/simple-line-icons',

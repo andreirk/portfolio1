@@ -10,18 +10,21 @@ import Dashboard from '../../views/Dashboard/Dashboard';
 import Charts from '../../views/Charts/Charts';
 import Widgets from '../../views/Widgets/Widgets';
 
-// Components
-import Buttons from '../../views/Components/Buttons/Buttons';
-import PersonPage from '../apps/EventsForPeople/routes/PersonPage'
-import EventsPage from '../apps/EventsForPeople/routes/EventsPage'
-
 // Icons
 import FontAwesome from '../../views/Icons/FontAwesome/FontAwesome';
 import SimpleLineIcons from '../../views/Icons/SimpleLineIcons/SimpleLineIcons';
 import Page404 from "../common/Page404/Page404";
+
+// Components
+import Buttons from '../../views/Components/Buttons/Buttons';
+import PersonPage from '../apps/EventsForPeople/routes/PersonPage'
+import EventsPage from '../apps/EventsForPeople/routes/EventsPage'
+import ExpensifyApp from "../apps/Expensify/routers/AppRouter";
 import IndecisionApp from "../apps/Indecision/components/IndecisionApp";
 import Reduxstagram from "../apps/ClonStagram/reduxstagram";
 import App from "../apps/Clonstagram2/routes/App";
+import PhonesStore from "../apps/EcommerceApp/index";
+
 
 
 class AdminPage extends Component {
@@ -47,7 +50,9 @@ class AdminPage extends Component {
                 {/*<Route path = '/admin' name="Admin Page" component = {AdminPage}/>*/}
                 <Route path = '/admin/people' name="People Page" component = {PersonPage}/>
                 <Route path = '/admin/events' name="Events Page" component = {EventsPage}/>
-                <Route path = '/admin/reduxstagram' name="Events Page" component = {App}/>
+                <Route path = '/admin/reduxstagram' name="Clontagram Page" component = {App}/>
+                <Route path = '/admin/expensify' name="Expensify Page" component = {ExpensifyApp}/>
+                <Route path = '/admin/phoneshop' name="Expensify Page" component = {PhonesStore}/>
                 {/*<Route exact path="/" name="Home" render={() => (<Redirect to="/auth" />)}/>*/}
                 {/*<Route component={ Page404 } />*/}
               </Switch>

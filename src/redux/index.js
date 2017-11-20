@@ -7,10 +7,12 @@ import saga from './saga'
 import history from '../history'
 import posts from "../components/apps/Clonstagram2/data/posts";
 import comments from "../components/apps/Clonstagram2/data/comments";
+import thunk from "redux-thunk";
+import {composeWithDevTools} from "redux-devtools-extension";
 
 const sagaMiddleware = createSagaMiddleware()
 
-const enhancer = applyMiddleware(routerMiddleware(history), sagaMiddleware, logger)
+const enhancer = composeWithDevTools(applyMiddleware(routerMiddleware(history), sagaMiddleware, logger, thunk))
 
 
 // create an object for the default data

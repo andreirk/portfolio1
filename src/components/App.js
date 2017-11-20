@@ -27,7 +27,7 @@ class App extends Component {
             {/* <ProtectedRoute path = '/admin' component = {AdminPage}/>
                     <ProtectedRoute path = '/people' component={PersonPage}/>*/}
             {/*<ProtectedRoute path='/events' component={EventsPage}/>*/}
-            {/*<Route exact path="/" name="Home" render={() => (<Redirect to="/admin" />)}/>*/}
+            <Route exact path="/" name="Home" render={() => (<Redirect to="/admin" />)}/>
             <ProtectedRoute path="/admin" component={Full}/>
             <Route path='/auth' name="Auth Page" component={AuthPage}/>
             {/*<Route exact path="/404" name="Page 404" component={Page404}/>*/}
@@ -42,3 +42,4 @@ class App extends Component {
 }
 
 export default App
+
