@@ -123,6 +123,11 @@ export default {
           ]
         },
         {
+          name: 'ChatApp 1',
+          url: '/admin/chatroom_1',
+          icon: 'icon-star'
+        },
+        {
           name: 'Indecision',
           url: '/admin/indecision',
           icon: 'icon-star'

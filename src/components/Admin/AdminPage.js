@@ -24,6 +24,7 @@ import IndecisionApp from "../apps/Indecision/components/IndecisionApp";
 import Reduxstagram from "../apps/ClonStagram/reduxstagram";
 import App from "../apps/Clonstagram2/routes/App";
 import PhonesStore from "../apps/EcommerceApp/index";
+import ChatApp from "../apps/ChatApp1/components/App";
 
 
 
@@ -52,7 +53,8 @@ class AdminPage extends Component {
                 <Route path = '/admin/events' name="Events Page" component = {EventsPage}/>
                 <Route path = '/admin/reduxstagram' name="Clontagram Page" component = {App}/>
                 <Route path = '/admin/expensify' name="Expensify Page" component = {ExpensifyApp}/>
-                <Route path = '/admin/phoneshop' name="Expensify Page" component = {PhonesStore}/>
+                <Route path = '/admin/phoneshop' name="PhoneShop Page" component = {PhonesStore}/>
+                <Route path = '/admin/chatroom_1' name="ChatRoom 1 Page" component = {ChatApp}/>
                 {/*<Route exact path="/" name="Home" render={() => (<Redirect to="/auth" />)}/>*/}
                 {/*<Route component={ Page404 } />*/}
               </Switch>
