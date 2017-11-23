@@ -1,7 +1,10 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
-import {fetchPhones, loadMorePhones, getPhonesSelector, addPhoneToBasket} from "../../../../../ducks/phones";
+import {
+  fetchPhones, loadMorePhones, getPhonesSelector, addPhoneToBasket,
+  fetchCategories, getActiveCategoryId
+} from "../../../../../ducks/phones";
 import {Link} from "react-router-dom";
 import * as R from "ramda";
 
@@ -10,11 +13,11 @@ class Phones extends Component {
 
   componentDidMount(){
     this.props.fetchPhones()
+    this.props.fetchCategories()
   }
 
   render() {
     const {phones, loadMorePhones} = this.props
-    console.info('-------', this.props)
     return (
         <div>
           <div className="books row">
@@ -25,7 +28,7 @@ class Phones extends Component {
               <button
                   className="pull-right btn btn-primary"
                onClick={loadMorePhones}
-              ></button>
+              >Load More phones</button>
             </div>
           </div>
         </div>
@@ -42,7 +45,7 @@ class Phones extends Component {
             <img className="img-thumbnail" src={phone.image} alt={phone.name}/>
           </div>
           <div className="caption">
-            <h4 className="pull-right">{phone.price}</h4>
+            <h4 className="pull-right">${phone.price}</h4>
             <h4>
               <Link to={`/admin/phoneshop/phones/${phone.id}`}>
                 {phone.name}
@@ -71,14 +74,16 @@ class Phones extends Component {
 Phones.propTypes = {};
 Phones.defaultProps = {};
 
-const mapStateToProps = state => ({
-  phones: getPhonesSelector(state)
+const mapStateToProps = (state, ownProps) => ({
+  phones: getPhonesSelector(state),
+  activeCategoryId: getActiveCategoryId(state, ownProps)
 })
 
 const mapDispatchToProps = {
   fetchPhones,
   loadMorePhones,
-  addPhoneToBasket
+  addPhoneToBasket,
+  fetchCategories
 }
 
 export default connect(mapStateToProps, mapDispatchToProps) (Phones);

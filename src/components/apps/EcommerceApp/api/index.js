@@ -1,9 +1,15 @@
 import phones from './mockPhones'
+import categories from './mockCategories'
+
 
 export const fetchPhonesApi = async () => {
-  return new Promise(resolve => {
-    resolve(phones)
-  })
+  const response = await fetch('http://www.mocky.io/v2/5a16458a31000056008d31b6')
+  const data = await response.json()
+
+  return data.phones
+  // return new Promise(resolve => {
+  //   resolve(phones)
+  // })
 }
 
 export const loadMorePhonesApi = async ({offset}) => {
@@ -16,5 +22,12 @@ export const fetchPhoneByIdApi = async (phoneId) => {
   return new Promise((resolve, reject) => {
     const phone =  phones.find(el => el.id === phoneId)
     resolve(phone)
+  })
+}
+
+
+export const fetchCategoriesApi = async () => {
+  return new Promise(resolve => {
+    resolve(categories)
   })
 }

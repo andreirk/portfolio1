@@ -11,17 +11,18 @@ class Search extends Component {
   render() {
     return (
        <div className="well blosd">
-         <h3 className="lead">Quick shop</h3>
+         <h3 className="lead">Q-shop</h3>
          <div className="input-group">
            <form onSubmit={this.handleSubmit}>
              <input
+                 id="search"
                  onChange={this.handleChange}
-                 className="form-control"
+                 className="form-control search"
                  type="text"/>
            </form>
            <span className="input-group-btn">
              <button className="btn btn-default">
-               <span className="glyphicon glyphicon-search"/>
+               <i class="fa fa-search" aria-hidden="true"></i>
              </button>
            </span>
          </div>
@@ -30,7 +31,6 @@ class Search extends Component {
   }
 
   handleChange = (event ) => {
-    console.log(event.target.value)
     this.setState({
       value: event.target.value
     })

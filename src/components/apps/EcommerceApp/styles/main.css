@@ -2,6 +2,9 @@
     font-size: .9rem;
 }
 
+#search.search.form-control {
+    width: 100%;
+}
 
 #page-preloader {
     position: fixed;
@@ -358,7 +361,7 @@ nav.navbar-inverse .navbar-nav>li>a:hover,nav.navbar-inverse .navbar-nav>li>a.Ac
 }
 
 .form-group .help-block {
-    display: none;
+    /*display: none;*/
 }
 
 .form-group.has-error .help-block {

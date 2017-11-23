@@ -1,12 +1,18 @@
 import {appName} from '../config'
-import {OrderedMap, OrderedSet, Record, List} from 'immutable'
+import {OrderedSet, Record} from 'immutable'
 import {createSelector} from 'reselect'
-import {fetchPhoneByIdApi, fetchPhonesApi, loadMorePhonesApi} from "../components/apps/EcommerceApp/api/index";
+import {
+  fetchCategoriesApi,
+  fetchPhoneByIdApi,
+  fetchPhonesApi,
+  loadMorePhonesApi
+} from "../components/apps/EcommerceApp/api/index";
 import * as R from "ramda";
 
 /**
  * Constants
  * */
+
 
 
 export const moduleName = 'phones'
@@ -31,6 +37,20 @@ export const ADD_PHONE_TO_BASKET = `${prefix}/ADD_PHONE_TO_BASKET`
 
 export const SEARCH_PHONE = `${prefix}/SEARCH_PHONE`
 
+export const FETCH_CATEGORIES_START = `${prefix}/FETCH_CATEGORIES_START`
+export const FETCH_CATEGORIES_SUCCESS = `${prefix}/FETCH_CATEGORIES_SUCCESS`
+export const FETCH_CATEGORIES_FAILD = `${prefix}/FETCH_CATEGORIES_FAILD`
+
+export const CHOOSE_CATEGORY = `${prefix}/CHOOSE_CATEGORY`
+
+export const REMOVE_ITEM_FROM_BASKET = `${prefix}/REMOVE_ITEM_FROM_BASKET`
+
+export const BASKET_CHECKOUT = `${prefix}/BASKET_CHECKOUT`
+
+export const CLEAN_BASKET = `${prefix}/CLEAN_BASKET`
+
+
+
 
 
 /**
@@ -43,7 +63,9 @@ export const ReducerRecord = Record({
   selected: new OrderedSet([]),
   phone: {},
   basket: [],
-  search: ''
+  search: '',
+  categories: [],
+  categoryId: null
 })
 
 export const PhoneRecord = Record({
@@ -63,17 +85,6 @@ export const PhoneRecord = Record({
 })
 
 
-// export function toImmutableEntities(values, DataRecord) {
-//   return values
-//       .reduce(
-//           (acc, value) => {
-//             const {id} = value;
-//            return  acc.set(id, new DataRecord({ id, ...value }))},
-//           new OrderedMap({})
-//       )
-// }
-
-
 export default function reducer(state = new ReducerRecord({}), action) {
   const {type, payload} = action;
 
@@ -88,29 +99,25 @@ export default function reducer(state = new ReducerRecord({}), action) {
       return state.set('phone', payload)
 
     case ADD_PHONE_TO_BASKET:
-
       return state.update('basket', basket => { return [...basket, payload]})
 
     case SEARCH_PHONE:
       return  state.set('search', payload)
-      // return R.assoc(payload.id, payload, state)
-    // case FETCH_LAZY_START:
-    //   return state.set('loading', true)
-    //
-    // case FETCH_ALL_SUCCESS:
-    //   return state
-    //       .set('loading', false)
-    //       .set('loaded', true)
-    //       .set('entities', fbToEntities(payload, PhoneRecord))
-    //
-    // case FETCH_LAZY_SUCCESS:
-    //   return state
-    //       .set('loading', false)
-    //       .mergeIn(['entities'], fbToEntities(payload, PhoneRecord))
-    //       .set('loaded', Object.keys(payload).length < 10)
-    //
-    // case SELECT_EVENT:
-    //   return state.update('selected', selected => selected.add(payload.uid))
+
+    case FETCH_CATEGORIES_SUCCESS:
+      return state.set('categories', payload)
+
+    case CHOOSE_CATEGORY:
+      return state.set('categoryId', payload)
+
+    case REMOVE_ITEM_FROM_BASKET:
+      const basket = state.get('basket')
+      const newBasketState = R.without(R.of(payload), basket)
+      return state.set('basket', newBasketState)
+
+    case CLEAN_BASKET:
+      return state.set('basket', [])
+
 
     default:
       return state
@@ -123,56 +130,94 @@ export default function reducer(state = new ReducerRecord({}), action) {
 
 export const stateSelector = state => state[moduleName]
 export const entitiesSelector = createSelector(stateSelector, state => state.entities)
-// export const itemSelector = createSelector(stateSelector, state => state.entities)
+export const categoriesSelector = createSelector(stateSelector, state => state.categories)
+export const categoryIdSelector = createSelector(stateSelector, state => state.categoryId)
+
+
 export const basketSelector = createSelector(stateSelector, state => state.basket)
 export const searchSelector = createSelector(stateSelector, state => state.search)
 
-// export const loadingSelector = createSelector(stateSelector, state => state.loading)
-// export const loadedSelector = createSelector(stateSelector, state => state.loaded)
-// export const selectionSelector = createSelector(stateSelector, state => state.selected.toArray())
-// export const getPhonesSelector = createSelector(entitiesSelector, entities => { return entities.valueSeq().toArray()})
-export const getPhonesSelector = createSelector(entitiesSelector, searchSelector, (entities, search) => {
-  if(!search) return entities
-  else {
-    return entities.filter((phone) => {
+export const getPhonesSelector = createSelector(
+    entitiesSelector,
+    searchSelector,
+    categoryIdSelector,
+    (entities, search, categoryId) => {
+
+  let result = entities;
+  if(search ) {
+    result = result.filter((phone) => {
       return phone['name'].toLowerCase().includes(search.toLowerCase())
   })}
 
+  if(categoryId ){
+    result = result.filter((phone) => {
+      return  categoryId === phone['categoryId']
+    })
+  }
+
+  if(categoryId === 0){
+    result = result;
+  }
+
+  return result
+
 })
+
 
 export const getRenderedPhonesListLength = createSelector(entitiesSelector, entities => entities.length)
 
-export const getPhoneByIdSelector = (state, id) => {
-  if(!id) return {}
-  else {
-    console.log('----BY ID--', {id, state})
-    return R.prop(id, state.phones.entities)
+export const getActiveCategoryId = (state, ownProps) => {
+  const matchArr = state.router.location.pathname.match(/(categories\/)(\d{1,2})/)
+  let id
+  if(matchArr){
+    id = matchArr[matchArr.length-1];
   }
+
+  return id
+}
+
+
+
+export const getPhoneByIdSelector = (state, id) => {
+  let result
+  if(!id) result = {}
+  else {
+    result = state.phones.entities.find(phone => phone.id === id)
+  }
+  return result
 }
 
 export const getTotalBasketCountSelector = createSelector(basketSelector, basket => basket.length)
 
 
 export const totalBasketPriceSelector = state => {
-  // const totalPrice = R.compose(
-  //     R.sum,
-  //     R.pluck('price'),
-  //     R.map(id => getPhoneByIdSelector(state, id))
-  // )(state.basket)
-  //
-  // return totalPrice
   return state.phones.basket.reduce((acc, phoneId) => {
-    console.log('---ACC', {state, acc})
     return acc + parseInt(getPhoneByIdSelector(state, phoneId).price || 0)
   }, 0)
 
 }
+export const getBasketPhonesWithCount = state => {
 
+  const basket = basketSelector(state)
 
+  const uniqueIds = R.uniq(basket)
 
-// export const selectedEventsSelector = createSelector(entitiesSelector, selectionSelector, (entities, selection) =>
-//     selection.map(uid => entities.get(uid))
-// )
+  const phoneCount = id => R.compose(
+      R.length,
+      R.filter(basketId => R.equals(id, basketId))
+  )(basket)
+
+  const phoneWithCount = phone => R.assoc('count', phoneCount(phone.id), phone)
+
+  const phones = R.compose(
+      R.map(phoneWithCount),
+      R.map(id =>{
+       return getPhoneByIdSelector(state, id)
+      })
+  )(uniqueIds)
+  return phones
+}
+
 
 /**
  * Action Creators
@@ -201,6 +246,13 @@ export function fetchPhones( ) {
   }
 }
 
+
+export const chooseCategory  = id => dispatch =>  {
+  dispatch({
+    type: CHOOSE_CATEGORY,
+    payload: id
+  })
+}
 
 
 export function loadMorePhones( ) {
@@ -262,85 +314,53 @@ export const searchPhone = text =>  dispatch => {
   })
 }
 
-// export function fetchAllEvents() {
-//   return {
-//     type: FETCH_ALL_REQUEST
-//   }
-// }
-//
-// export function selectEvent(uid) {
-//   return {
-//     type: SELECT_EVENT,
-//     payload: { uid }
-//   }
-// }
-//
-// export function fetchLazy() {
-//   return {
-//     type: FETCH_LAZY_REQUEST
-//   }
-// }
+export const removeItemFromBasket = id => dispatch => {
+  dispatch({
+    type: REMOVE_ITEM_FROM_BASKET,
+    payload: id
+  })
+}
 
-// /**
-//  * Sagas
-//  * */
-//
-// export function* fetchAllSaga() {
-//   const ref = firebase.database().ref('events')
-//
-//   yield put({
-//     type: FETCH_ALL_START
-//   })
-//
-//   const snapshot = yield call([ref, ref.once], 'value')
-//
-//   yield put({
-//     type: FETCH_ALL_SUCCESS,
-//     payload: snapshot.val()
-//   })
-// }
-//
-// export const fetchLazySaga = function * () {
-//   while (true) {
-//     yield take(FETCH_LAZY_REQUEST)
-//
-//     const state = yield select(stateSelector)
-//
-//     if (state.loading || state.loaded) continue
-// //        if (state.loaded) return
-//
-//     yield put({
-//       type: FETCH_LAZY_START
-//     })
-//
-//     const lastEvent = state.entities.last()
-//
-//     const ref = firebase.database().ref('events')
-//         .orderByKey()
-//         .limitToFirst(10)
-//         .startAt(lastEvent ? lastEvent.uid : '')
-//
-//     const data = yield call([ref, ref.once], 'value')
-//
-//     yield put({
-//       type: FETCH_LAZY_SUCCESS,
-//       payload: data.val()
-//     })
-//   }
-// }
-//
-// //lazy fetch FB
-// /*
-// firebase.database().ref('events')
-//     .orderByKey()
-//     .limitToFirst(10)
-//     .startAt(lastUid)
-//
-// */
-// export function* saga() {
-//   yield all([
-//     takeEvery(FETCH_ALL_REQUEST, fetchAllSaga),
-//     fetchLazySaga()
-//   ])
-// }
-//
+export function fetchCategories( ) {
+  return async  dispatch => {
+
+    try {
+      dispatch({type: FETCH_CATEGORIES_START})
+
+      const categories = await fetchCategoriesApi()
+
+      dispatch({
+        type: FETCH_CATEGORIES_SUCCESS,
+        payload: categories,
+      })
+    }
+    catch (err){
+      dispatch({
+        type: FETCH_CATEGORIES_FAILD,
+        payload: err,
+        error: true
+      })
+    }
+  }
+}
+
+export const basketCheckout = phones => dispatch => {
+  dispatch({
+    type: BASKET_CHECKOUT,
+    payload: phones
+  })
+  alert('FAKE CHECKOUT SUCCESS!\n' + JSON.stringify(phones, null, 3))
+}
+
+export const  cleanBasket = () => dispatch => {
+  dispatch({
+    type: CLEAN_BASKET
+  })
+}
+
+
+
+/**
+ * Sagas
+ * */
+

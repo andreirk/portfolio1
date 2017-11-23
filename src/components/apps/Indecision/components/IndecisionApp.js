@@ -58,9 +58,7 @@ export default class IndecisionApp extends React.Component {
       localStorage.setItem('options', json);
     }
   }
-  componentWillUnmount() {
-    console.log('componentWillUnmount');
-  }
+
   render() {
     const subtitle = 'Put your life in the hands of a computer';
 

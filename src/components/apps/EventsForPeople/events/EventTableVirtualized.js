@@ -11,7 +11,6 @@ class EventTableVirtualized extends Component {
     };
     componentDidMount() {
         this.props.fetchAllEvents()
-        console.log('---', 'load events')
     }
 
     render() {

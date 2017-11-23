@@ -13,10 +13,16 @@
       "**/.*",
       "**/node_modules/**"
     ],
-    "rewrites": [ {
+    "rewrites": [
+      {
+        "source": "uploads/**",
+        "destination": "/uploads/"
+      },
+      {
       "source": "**",
       "destination": "/index.html"
-    } ]
+      }
+    ]
   },
   "storage": {
     "rules": "storage.rules"

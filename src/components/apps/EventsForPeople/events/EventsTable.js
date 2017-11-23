@@ -10,7 +10,6 @@ export class EventsTable extends Component {
 
     componentDidMount() {
         this.props.fetchAllEvents()
-        console.log('---', 'load events')
     }
 
     render() {

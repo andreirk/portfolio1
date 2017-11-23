@@ -26,7 +26,6 @@ class Comments extends Component {
   }
 
   render() {
-    console.log('----props :', this.props)
     return (
         <div className="comments">
           {this.props.postComments.map(this.renderComment)}
