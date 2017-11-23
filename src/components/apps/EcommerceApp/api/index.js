@@ -3,10 +3,11 @@ import categories from './mockCategories'
 
 
 export const fetchPhonesApi = async () => {
-  const response = await fetch('http://www.mocky.io/v2/5a16458a31000056008d31b6')
+  const response = await fetch('https://www.mocky.io/v2/5a16458a31000056008d31b6')
   const data = await response.json()
 
   return data.phones
+
   // return new Promise(resolve => {
   //   resolve(phones)
   // })

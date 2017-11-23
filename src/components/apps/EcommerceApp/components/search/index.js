@@ -22,7 +22,7 @@ class Search extends Component {
            </form>
            <span className="input-group-btn">
              <button className="btn btn-default">
-               <i class="fa fa-search" aria-hidden="true"></i>
+               <i className="fa fa-search" aria-hidden="true"></i>
              </button>
            </span>
          </div>
