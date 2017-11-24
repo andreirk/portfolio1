@@ -4,11 +4,12 @@ import AuthPage from './routes/Auth'
 import ProtectedRoute from "./common/ProtectedRoute";
 
 // Containers
-import Full from './Admin/AdminPage'
+import Full from './Layout/LayoutPage'
 
 // Views
 import Page404 from './common/Page404/Page404'
 import EventsPage from "./apps/EventsForPeople/routes/EventsPage";
+import CustomDragLayer from "./CustomDragLayer";
 
 
 
@@ -34,6 +35,7 @@ class App extends Component {
 
             {/*<Redirect from="/" to="/dashboard" />*/}
             <Route component={ Page404 } />
+            <CustomDragLayer />
 
           </Switch>
         </div>

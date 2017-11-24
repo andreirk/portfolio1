@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import {Switch, Route, Redirect, NavLink} from 'react-router-dom';
 import {Container} from 'reactstrap';
-import Header from '../Header/Header';
-import Sidebar from '../Sidebar/Sidebar';
-import Breadcrumb from '../Breadcrumb/Breadcrumb';
-import Aside from '../Aside/Aside';
-import Footer from '../Footer/Footer';
+import Header from './components/Header';
+import Sidebar from './components/Sidebar/Sidebar';
+import Breadcrumb from './components/Breadcrumb/Breadcrumb';
+import Aside from './components/Aside';
+import Footer from './components/Footer/Footer';
 import Dashboard from '../../views/Dashboard/Dashboard';
 import Charts from '../../views/Charts/Charts';
 import Widgets from '../../views/Widgets/Widgets';
@@ -25,10 +25,11 @@ import Reduxstagram from "../apps/ClonStagram/reduxstagram";
 import App from "../apps/Clonstagram2/routes/App";
 import PhonesStore from "../apps/EcommerceApp/index";
 import ChatApp from "../apps/ChatApp1/components/App";
+import Admin from "../apps/EventsForPeople/routes/Admin";
 
 
 
-class AdminPage extends Component {
+class LayoutPage extends Component {
   constructor(props){
     super(props)
     this.match = props.match
@@ -50,6 +51,7 @@ class AdminPage extends Component {
                 <Route path="/admin/indecision" name="Indecision" component={IndecisionApp}/>
                 {/*<Route path = '/admin' name="Admin Page" component = {AdminPage}/>*/}
                 <Route path = '/admin/people' name="People Page" component = {PersonPage}/>
+                <Route path = '/admin/events_admin' name="Admin Page" component = {Admin}/>
                 <Route path = '/admin/events' name="Events Page" component = {EventsPage}/>
                 <Route path = '/admin/reduxstagram' name="Clontagram Page" component = {App}/>
                 <Route path = '/admin/expensify' name="Expensify Page" component = {ExpensifyApp}/>
@@ -69,4 +71,4 @@ class AdminPage extends Component {
   }
 }
 
-export default AdminPage;
+export default LayoutPage;

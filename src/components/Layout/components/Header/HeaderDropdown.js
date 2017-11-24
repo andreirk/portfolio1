@@ -7,7 +7,7 @@ import {
   NavDropdown
 } from 'reactstrap';
 import {connect} from "react-redux";
-import {signOut} from "../../ducks/auth";
+import {signOut} from "../../../../ducks/auth";
 
 class HeaderDropdown extends Component {
 

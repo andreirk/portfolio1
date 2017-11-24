@@ -29,7 +29,7 @@ export default {
         //   icon: 'icon-puzzle'
         // },
         {
-          name: 'AdminPage',
+          name: 'LayoutPage',
           url: '/admin',
           icon: 'icon-puzzle'
         },
@@ -110,6 +110,7 @@ export default {
             text: '4.7'
           },
           children: [
+
             {
               name: 'Events',
               url: '/admin/events',
@@ -119,7 +120,12 @@ export default {
               name: 'People',
               url: '/admin/people',
               icon: 'icon-star',
-            }
+            },
+            {
+              name: 'manage',
+              url: '/admin/events_admin',
+              icon: 'icon-star',
+            },
           ]
         },
         {
