@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
 import {Table, Column} from 'react-virtualized'
 import {connect} from 'react-redux'
-import {fetchAllEvents, selectEvent, selectedEventsSelector, eventListSelector, loadedSelector, loadingSelector} from '../../../../ducks/events'
+import {
+  selectEvent, selectedEventsSelector, eventListSelector, loadedSelector, loadingSelector,
+  fetchAllEvents
+} from '../../../../ducks/events'
 import Loader from '../../../common/Loader'
 import 'react-virtualized/styles.css'
 
