@@ -7,7 +7,6 @@ class Message extends Component {
     const fromMe = this.props.fromMe ? 'from-me' : '';
     return (
         <div className={`message ${fromMe}`}>
-          Message
           <div className='username'>
             { this.props.username }
           </div>

@@ -22,7 +22,7 @@ class Messages extends Component {
       );
     });
     return (
-        <div className='messages' id='messageList'>
+        <div className='chat-messages' id='messageList'>
           Messages
           { messages }
         </div>

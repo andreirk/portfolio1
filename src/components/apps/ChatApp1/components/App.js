@@ -17,10 +17,11 @@ class App extends Component {
 
     return (
         <form onSubmit={this.usernameSubmitHandler} className="username-container">
-          <h1>React Instant Chat</h1>
+          <h1 className="chat-h1">React Instant Chat</h1>
           <div>
             <input
                 type="text"
+                className="chat-input"
                 onChange={this.usernameChangeHandler}
                 placeholder="Enter a username..."
                 required />
