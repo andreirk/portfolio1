@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {DropTarget} from 'react-dnd'
 import {connect} from 'react-redux'
-import {addEventToPerson, peopleListSelector} from "../../../../ducks/people";
+import {addEventToPerson, peopleListSelector} from "../../../../redux/ducks/people";
 
 class SelectedEventCard extends Component {
   static propTypes = {

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
-import {categoriesSelector, chooseCategory, getActiveCategoryId} from "../../../../../ducks/phones";
+import {categoriesSelector, chooseCategory, getActiveCategoryId} from "../../../../../redux/ducks/phones";
 import {Link, NavLink, withRouter} from "react-router-dom";
 import {compose} from "redux";
 import PropTypes from 'prop-types';

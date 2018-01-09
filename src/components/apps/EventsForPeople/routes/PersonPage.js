@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
-import {addPerson} from '../../../../ducks/people'
+import {addPerson} from '../../../../redux/ducks/people'
 import NewPersonForm from '../people/NewPersonForm'
 import PeopleList from '../people/PeopleList'
 

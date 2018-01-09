@@ -4,7 +4,7 @@ import {connect} from "react-redux";
 import {
   fetchPhones, loadMorePhones, getPhonesSelector, addPhoneToBasket,
   fetchCategories, getActiveCategoryId
-} from "../../../../../ducks/phones";
+} from "../../../../../redux/ducks/phones";
 import {Link} from "react-router-dom";
 import * as R from "ramda";
 

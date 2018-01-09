@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import SelectedEventCard from './SelectedEventCard'
 import {connect} from 'react-redux'
 import {spring, TransitionMotion} from 'react-motion'
-import {selectedEventsSelector} from "../../../../ducks/events";
+import {selectedEventsSelector} from "../../../../redux/ducks/events";
 
 class SelectedEvents extends Component {
   static propTypes = {

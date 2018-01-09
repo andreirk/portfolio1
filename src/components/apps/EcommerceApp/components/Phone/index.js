@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
-import {addPhoneToBasket, fetchPhoneById, getPhoneByIdSelector} from "../../../../../ducks/phones";
+import {addPhoneToBasket, fetchPhoneById, getPhoneByIdSelector} from "../../../../../redux/ducks/phones";
 import * as R from "ramda";
 import BasketCart from '../basketCart'
 import {Link} from "react-router-dom";

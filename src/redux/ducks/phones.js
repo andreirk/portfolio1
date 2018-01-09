@@ -1,4 +1,4 @@
-import {appName} from '../config'
+import {appName} from '../../config'
 import {OrderedSet, Record} from 'immutable'
 import {createSelector} from 'reselect'
 import {
@@ -6,7 +6,7 @@ import {
   fetchPhoneByIdApi,
   fetchPhonesApi,
   loadMorePhonesApi
-} from "../components/apps/EcommerceApp/api/index";
+} from "../../components/apps/EcommerceApp/api/index";
 import * as R from "ramda";
 
 /**

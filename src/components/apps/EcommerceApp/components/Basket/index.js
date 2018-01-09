@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import {
   basketCheckout, cleanBasket, getBasketPhonesWithCount, removeItemFromBasket,
   totalBasketPriceSelector
-} from "../../../../../ducks/phones";
+} from "../../../../../redux/ducks/phones";
 import * as R from "ramda";
 import {Link} from "react-router-dom";
 

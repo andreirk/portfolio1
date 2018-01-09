@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
-import {searchPhone} from "../../../../../ducks/phones";
+import {searchPhone} from "../../../../../redux/ducks/phones";
 
 class Search extends Component {
   state = {

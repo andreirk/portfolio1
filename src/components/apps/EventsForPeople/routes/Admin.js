@@ -14,7 +14,7 @@ class Admin extends Component {
   render() {
     return (
         <div className="container">
-          <div className="row"><h4>Select events and choose (or <Link to="/admin/people">add new people</Link>) and associate them </h4></div>
+          <div className="row"><h4>Select events and choose (or <Link to="/admin/people">add new people</Link>) and Drag&Drop them to selected events to associate </h4></div>
          <div className="row">
            <div className="col-md-3 pull-right"><Trash /></div>
          </div>

@@ -208,12 +208,12 @@ export default {
     //     }
     //   ]
     // },
-    {
-      name: 'Download Android Apps',
-      url: 'http://coreui.io/react/',
-      icon: 'icon-cloud-download',
-      class: 'mt-auto',
-      variant: 'success'
-    },
+    // {
+    //   name: 'Download Android Apps',
+    //   url: 'http://coreui.io/react/',
+    //   icon: 'icon-cloud-download',
+    //   class: 'mt-auto',
+    //   variant: 'success'
+    // },
   ]
 };

@@ -1,5 +1,5 @@
 import {all, takeEvery, put, call, take, select} from 'redux-saga/effects'
-import {appName} from '../config'
+import {appName} from '../../config'
 import {Record, OrderedMap, OrderedSet} from 'immutable'
 import firebase from 'firebase'
 import {createSelector} from 'reselect'

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
-import {fetchAllEvents, selectEvent, selectedEventsSelector, eventListSelector, loadedSelector, loadingSelector} from '../../../../ducks/events'
+import {fetchAllEvents, selectEvent, selectedEventsSelector, eventListSelector, loadedSelector, loadingSelector} from '../../../../redux/ducks/events'
 import Loader from '../../../common/Loader'
 
 export class EventsTable extends Component {

@@ -1,4 +1,4 @@
-import {appName} from '../config'
+import {appName} from '../../config'
 import {Record, OrderedMap} from 'immutable'
 import {reset} from 'redux-form'
 import {put, call, takeEvery, all, select, spawn, cancelled, race, take, cancel} from 'redux-saga/effects'
@@ -211,6 +211,7 @@ export function * saga() {
   yield spawn(checkRouteChangeSaga)
 
   yield all([
+    takeEvery(FETCH_ALL_REQUEST, fetchAllSaga),
     takeEvery(ADD_PERSON_REQUEST, addPersonSaga),
     takeEvery(ADD_EVENT_REQUEST, addEventToPersonSaga)
   ])

@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {List} from 'react-virtualized'
 import {TransitionMotion, spring} from 'react-motion'
 import PersonRow from './PersonRow'
-import {fetchAll, peopleListSelector} from "../../../../ducks/people";
+import {fetchAll, peopleListSelector} from "../../../../redux/ducks/people";
 
 class PeopleList extends Component {
   static propTypes = {};

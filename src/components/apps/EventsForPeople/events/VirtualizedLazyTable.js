@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {Table, Column, InfiniteLoader} from 'react-virtualized'
 import 'react-virtualized/styles.css'
 import TableRow from './TableRow'
-import {eventListSelector, fetchLazy, moduleName, selectEvent} from "../../../../ducks/events";
+import {eventListSelector, fetchLazy, moduleName, selectEvent} from "../../../../redux/ducks/events";
 
 export class EventList extends Component {
   static propTypes = {

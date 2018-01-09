@@ -1,13 +1,14 @@
 {
-  "name": "@coreui/react",
+  "name": "Portfolio",
   "version": "1.0.4",
   "description": "Open Source Bootstrap Admin Template",
-  "author": "Łukasz Holeczek",
-  "homepage": "http://coreui.io",
-  "copyright": "Copyright 2017 creativeLabs Łukasz Holeczek",
+  "author": "Andrey Sokolov",
+  "homepage": "",
+  "copyright": "Copyright 2017 creativeLabs Andrey Sokolov",
   "license": "MIT",
   "private": true,
   "devDependencies": {
+    "admin-on-rest": "^1.3.3",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",

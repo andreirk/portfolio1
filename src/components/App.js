@@ -29,7 +29,9 @@ class App extends Component {
                     <ProtectedRoute path = '/people' component={PersonPage}/>*/}
             {/*<ProtectedRoute path='/events' component={EventsPage}/>*/}
             <Route exact path="/" name="Home" render={() => (<Redirect to="/admin" />)}/>
-            <ProtectedRoute path="/admin" component={Full}/>
+            <Route exact path="/admin2" name="NewAdmin" render={() => (<div>New component</div>)}/>
+            {/*<ProtectedRoute path="/admin" component={Full}/>*/}
+            <Route path="/admin" component={Full}/>
             <Route path='/auth' name="Auth Page" component={AuthPage}/>
             {/*<Route exact path="/404" name="Page 404" component={Page404}/>*/}
 

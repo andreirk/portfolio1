@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import {
   selectEvent, selectedEventsSelector, eventListSelector, loadedSelector, loadingSelector,
   fetchAllEvents
-} from '../../../../ducks/events'
+} from '../../../../redux/ducks/events'
 import Loader from '../../../common/Loader'
 import 'react-virtualized/styles.css'
 

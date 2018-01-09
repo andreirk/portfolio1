@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {Link, Redirect, Route} from 'react-router-dom'
 import {connect} from 'react-redux'
-import {userSelector} from '../../ducks/auth'
+import {userSelector} from '../../redux/ducks/auth'
 
 class ProtectedRoute extends Component {
     static propTypes = {

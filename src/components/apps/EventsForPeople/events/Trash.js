@@ -3,7 +3,7 @@ import {DropTarget} from 'react-dnd'
 import {connect} from 'react-redux'
 import {Motion, spring, presets} from 'react-motion'
 import Loader from "../../../common/Loader";
-import {deleteEvent, stateSelector} from "../../../../ducks/events";
+import {deleteEvent, stateSelector} from "../../../../redux/ducks/events";
 
 class Trash extends Component {
   static propTypes = {};

@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link} from "react-router-dom";
 import {connect} from "react-redux";
-import {getTotalBasketCountSelector, totalBasketPriceSelector} from "../../../../../ducks/phones";
+import {getTotalBasketCountSelector, totalBasketPriceSelector} from "../../../../../redux/ducks/phones";
 
 const BasketCart = (props) => {
   const {totalPrice, totalBasketCount} = props

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
-import {personSelector} from "../../../../ducks/people";
+import {personSelector} from "../../../../redux/ducks/people";
 
 class PersonDragPreview extends Component {
   static propTypes = {

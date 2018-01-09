@@ -1,4 +1,4 @@
-import {appName} from '../config'
+import {appName} from '../../config'
 import {Record} from 'immutable'
 import firebase from 'firebase'
 import {createSelector} from 'reselect'
@@ -79,14 +79,14 @@ export function signOut() {
     }
 }
 
-firebase.auth().onAuthStateChanged(user => {
-    if (!user) return
-
-    window.store.dispatch({
-        type: SIGN_IN_SUCCESS,
-        payload: { user }
-    })
-})
+// firebase.auth().onAuthStateChanged(user => {
+//     if (!user) return
+//
+//     window.store.dispatch({
+//         type: SIGN_IN_SUCCESS,
+//         payload: { user }
+//     })
+// })
 
 /**
  * Sagas
@@ -163,7 +163,7 @@ export function * watchStatusChangeSaga() {
     while (true) {
         yield take(SIGN_IN_SUCCESS)
         // redirect if sign in succcess
-        yield (put(replace('/admin')))
+        // yield (put(replace('/admin')))
         yield  take(SIGN_OUT_SUCCESS)
             yield (put(replace('/auth')))
     }
